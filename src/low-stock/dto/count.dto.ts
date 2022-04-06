@@ -2,9 +2,9 @@ import { IsNotEmpty, IsUrl } from "class-validator";
 
 export class CountDto {
 	@IsNotEmpty()
-	@IsUrl()
-	readonly productUrl: string;
+	readonly productId: string;
 
 	@IsNotEmpty()
-	readonly sessionId: string;
+	@IsUrl()
+	readonly storeUrl: string;
 }

@@ -1,11 +1,11 @@
 import { Module } from "@nestjs/common";
 import { MongooseModule } from "@nestjs/mongoose";
 
+import { ProductViewController } from "product-view/product-view.controller";
 import {
 	ProductView,
 	ProductViewSchema,
-} from "product-view/schemas/product-view.schema";
-import { ProductViewController } from "product-view/product-view.controller";
+} from "product-view/product-view.schema";
 import { ProductViewService } from "product-view/product-view.service";
 
 @Module({

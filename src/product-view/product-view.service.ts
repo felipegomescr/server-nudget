@@ -2,10 +2,10 @@ import { Injectable } from "@nestjs/common";
 import { InjectModel } from "@nestjs/mongoose";
 import type { Model } from "mongoose";
 
-import { CountDto } from "product-view/dto/count.dto";
-import { UpdateCountDto } from "product-view/dto/update-count.dto";
-import { ProductView } from "product-view/schemas/product-view.schema";
-import type { ProductViewDocument } from "product-view/schemas/product-view.schema";
+import { ProductView } from "product-view/product-view.schema";
+import type { CountDto } from "product-view/dto/count.dto";
+import type { UpdateCountDto } from "product-view/dto/update-count.dto";
+import type { ProductViewDocument } from "product-view/product-view.schema";
 
 @Injectable()
 export class ProductViewService {
@@ -14,15 +14,15 @@ export class ProductViewService {
 		private readonly productViewModel: Model<ProductViewDocument>
 	) {}
 
-	async count(countDto: CountDto): Promise<number> {
+	async count(countDto: CountDto) {
 		const $gte = new Date();
 
 		$gte.setMinutes($gte.getMinutes() - 5);
 
 		return this.productViewModel.count({
-			product: countDto.product,
-			session: {
-				$ne: countDto.session,
+			productUrl: countDto.productUrl,
+			sessionId: {
+				$ne: countDto.sessionId,
 			},
 			createdAt: {
 				$gte,
@@ -30,7 +30,7 @@ export class ProductViewService {
 		});
 	}
 
-	async updateCount(updateCountDto: UpdateCountDto): Promise<ProductView> {
+	async updateCount(updateCountDto: UpdateCountDto) {
 		return this.productViewModel.create(updateCountDto);
 	}
 }

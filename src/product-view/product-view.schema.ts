@@ -8,10 +8,10 @@ export type ProductViewDocument = ProductView & Document;
 })
 export class ProductView {
 	@Prop()
-	product: string;
+	productUrl: string;
 
 	@Prop()
-	session: string;
+	sessionId: string;
 }
 
 export const ProductViewSchema = SchemaFactory.createForClass(ProductView);

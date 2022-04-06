@@ -3,8 +3,8 @@ import { IsNotEmpty, IsUrl } from "class-validator";
 export class UpdateCountDto {
 	@IsNotEmpty()
 	@IsUrl()
-	readonly product: string;
+	readonly productUrl: string;
 
 	@IsNotEmpty()
-	readonly session: string;
+	readonly sessionId: string;
 }
