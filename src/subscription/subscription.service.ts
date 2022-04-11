@@ -17,6 +17,6 @@ export class SubscriptionService {
 	}
 
 	async updateCount() {
-		return this.subscriptionModel.create();
+		return this.subscriptionModel.create({});
 	}
 }
